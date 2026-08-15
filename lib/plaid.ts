@@ -44,8 +44,12 @@ export function publicAppUrl(request?: Request) {
     }
     return url.origin;
   }
+  const vercelHost = process.env.VERCEL_URL;
+  if (vercelHost) {
+    return new URL(`https://${vercelHost}`).origin;
+  }
   if (process.env.NODE_ENV === "production") {
-    throw new Error("NEXT_PUBLIC_APP_URL must be configured in production");
+    throw new Error("NEXT_PUBLIC_APP_URL or VERCEL_URL must be configured in production");
   }
   if (request) {
     const origin = new URL(request.url).origin;

@@ -84,7 +84,10 @@ test("rejects an external callback redirect", async () => {
 });
 
 test("does not issue Plaid Link tokens without authentication", async () => {
-  const response = await render("/api/plaid/create-link-token", { method: "POST", headers: { accept: "application/json" } });
+  const response = await render("/api/plaid/create-link-token", {
+    method: "POST",
+    headers: { accept: "application/json", origin },
+  });
   assert.ok(response.status === 401 || response.status === 503);
   assert.match(response.headers.get("content-type") ?? "", /application\/json/);
   const payload = await response.json();

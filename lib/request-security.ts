@@ -6,10 +6,8 @@ export class RequestSecurityError extends Error {
 }
 
 function trustedOrigin(request: Request) {
-  const configured = process.env.NEXT_PUBLIC_APP_URL;
-  if (!configured) return new URL(request.url).origin;
   try {
-    return new URL(configured).origin;
+    return new URL(request.url).origin;
   } catch {
     return "";
   }
