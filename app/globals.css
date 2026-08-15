@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #f6f3ee;
+  --muted: #948fa3;
+  --deep: #100e16;
+  --surface: #18151f;
+  --elevated: #211d2a;
+  --border: #302a3b;
+  --border-soft: rgba(255, 255, 255, 0.07);
+  --purple: #8b73ff;
+  --purple-bright: #a996ff;
+  --green: #55d99a;
+  --amber: #f1b967;
+  --critical: #ef7d78;
+  --gold: #d7bd78;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--deep); }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 78% -10%, rgba(139, 115, 255, 0.12), transparent 34rem),
+    var(--deep);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+::selection { background: rgba(139, 115, 255, 0.32); }
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: #3b3449; border-radius: 99px; }
+
+*:focus-visible {
+  outline: 2px solid var(--purple-bright);
+  outline-offset: 3px;
+}
+
+.sovereign-card {
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(33, 29, 42, 0.88), rgba(24, 21, 31, 0.94));
+  box-shadow: 0 18px 50px rgba(4, 3, 7, 0.14);
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-size: 0.69rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.fade-up { animation: fade-up 500ms cubic-bezier(.2,.75,.3,1) both; }
+.delay-1 { animation-delay: 80ms; }
+.delay-2 { animation-delay: 150ms; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(9px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
