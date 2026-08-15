@@ -6,7 +6,7 @@ and entity views, Supabase authentication, and secure Plaid connectivity.
 
 ## Prerequisites
 
-- Node.js `>=22.13.0`
+- Node.js `24.x`
 
 ## Local development
 
